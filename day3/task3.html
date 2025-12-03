@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel</title>
+    <meta name="description" content="Small HTML page with meta tags.">
+    <style>
+        /* Reset margin and padding */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            background-color: rgba(0,0,0,0.5);
+            position: fixed;
+            width: 100%;
+            z-index: 10;
+        }
+
+        nav h1 {
+            font-size: 2rem;
+        }
+
+        nav ol {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav li {
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        nav li:hover {
+            transform: translateY(-5px);
+        }
+
+        video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        .text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            width: 80%;
+        }
+
+        .text h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        .text h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .text p {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            border-radius: 10px;
+            border: none;
+            background-color: rgba(255,255,255,0.2);
+            color: white;
+            cursor: pointer;
+            transition: all 0.5s;
+            font-size: 1rem;
+        }
+
+        button:hover {
+            letter-spacing: 4px;
+            background-color: limegreen;
+            color: black;
+        }
+
+        footer {
+            position: fixed;
+            left: 20px;
+            bottom: 20px;
+        }
+
+        footer ol {
+            display: flex;
+            list-style: none;
+            gap: 10px;
+        }
+
+        footer li img {
+            width: 30px;
+            height: 30px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <nav>
+        <h1>TRAVEL</h1>
+        <ol>
+            <li>Home</li>
+            <li>About</li>
+            <li>Contact</li>
+            <li>Gallery</li>
+        </ol>
+    </nav>
+
+  
+    <video src="./assets/travel-video.mp4" autoplay loop muted></video>
+
+   
+    <div class="text">
+        <h3>NEVER STOP</h3>
+        <h1>EXPLORING THE WORLD</h1>
+        <p>Discover new places and make memories that last a lifetime.</p>
+        <button>EXPLORE</button>
+    </div>
+
+   
+    <footer>
+        <ol>
+            <li><img src="./assets/facebook.png" alt="Facebook"></li>
+            <li><img src="./assets/whatsapp.png"  alt="WhatsApp"></li>
+            <li><img src="./assets/instagram.png" alt="Instagram"></li>
+        </ol>
+    </footer>
+
+</body>
+</html>
