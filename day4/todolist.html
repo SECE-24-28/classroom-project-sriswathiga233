@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>To-Do List</title>
+    <style>
+        body{
+            background-color: lightblue;
+            font-family: Arial;
+        }
+        .box{
+            width: 350px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: auto;
+            margin-top: 50px;
+        }
+        input{
+            width: 200px;
+            padding: 5px;
+        }
+        button{
+            padding: 6px;
+            border: none;
+            color: white;
+        }
+        #addBtn{
+            background-color: green;
+        }
+        li{
+            margin-top: 8px;
+            list-style-type: none;
+            cursor: pointer;
+        }
+        .done{
+            text-decoration: line-through;
+        }
+        .deleteBtn{
+            background-color: red;
+            color: white;
+            border: none;
+            margin-left: 10px;
+            padding: 3px 5px;
+            cursor: pointer;
+        }
+
+        /* Dark mode */
+        .dark{
+            background-color: black;
+            color: white;
+        }
+        .dark .box{
+            background-color: #222;
+            color: white;
+        }
+
+        /* Dark mode button bottom center */
+        #modeBtn{
+            background-color: purple;
+            display: block;
+            margin: 40px auto 0 auto;  /* center bottom */
+        }
+    </style>
+</head>
+<body>
+
+<div class="box">
+    <h2>To-Do List</h2>
+
+    <input id="taskInput" type="text" placeholder="Enter task">
+    <button id="addBtn" onclick="addTask()">Add</button>
+
+    <ul id="taskList"></ul>
+</div>
+
+<button id="modeBtn" onclick="changeMode()">Dark Mode</button>
+
+<script>
+function addTask(){
+    var taskText = document.getElementById("taskInput").value;
+
+    if(taskText === ""){
+        alert("Please enter a task");
+        return;
+    }
+
+    var li = document.createElement("li");
+    li.innerHTML = taskText;
+
+    li.onclick = function(){
+        li.classList.toggle("done");
+    }
+
+    // Create delete button for this task
+    var del = document.createElement("button");
+    del.innerHTML = "Delete";
+    del.className = "deleteBtn";
+
+    del.onclick = function(event){
+        event.stopPropagation(); // Prevent strike-through when clicking delete
+        li.remove();
+    }
+
+    li.appendChild(del);
+    document.getElementById("taskList").appendChild(li);
+    document.getElementById("taskInput").value = "";
+}
+
+var dark = false;
+function changeMode(){
+    if(dark === false){
+        document.body.classList.add("dark");
+        document.getElementById("modeBtn").innerHTML = "Light Mode";
+        dark = true;
+    }
+    else{
+        document.body.classList.remove("dark");
+        document.getElementById("modeBtn").innerHTML = "Dark Mode";
+        dark = false;
+    }
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+	 <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body id="main">
+    
+    
+    <input type="text" id="nameInput" placeholder="Enter name">
+    <button onclick="addName()">Add to List</button>
+    <ul id="nameList"></ul>
+    <script>
+        function addName(){
+            let name = document.getElementById("nameInput").value;
+            let list = document.getElementById("nameList");
+            let listItem = document.createElement("li");
+            listItem.textContent = name;
+            list.appendChild(listItem);
+            document.getElementById("nameInput").value = "";
+        }
+    </script>
+</body>
+</html>
