@@ -1,0 +1,7 @@
+a promise always has three states:
+ 1.pending
+ the promise is still working
+ 2.fulfilled (resolved)
+ the promise completed successfully
+ 3.rejected
+ the promise failed

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Includes Search Task</title>
+</head>
+<body>
+ <input type="text" id="t1">
+ <ol id="list"></ol>
+
+<script >
+    let t1=document.getElementById("t1");
+    let ls=document.getElementById("list");
+    let frnds=['sowmya','visalini','sugatha','sangamitra','shristi'];
+function demo(){
+    ls.innerHTML=""; //reset the list before adding
+    frnds.forEach(frnd=>{
+        if(frnd.includes(t1.value)){
+            let li=document.createElement("li");
+            li.innerHTML=frnd;
+            ls.appendChild(li);
+        }
+    });
+}
+t1.addEventListener("keyup",demo);
+demo(); //initial loading
+</script>
+</body>
+
+</html>
