@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback App - Normal Page</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }
+        .search-box { width: 100%; padding: 10px; margin-bottom: 20px; }
+        .form-group { margin-bottom: 15px; }
+        input, textarea { width: 100%; padding: 8px; }
+        button { padding: 10px 20px; background: #007bff; color: white; border: none; cursor: pointer; }
+        .post { border: 1px solid #ddd; padding: 15px; margin: 10px 0; }
+        .post h3 { margin-top: 0; }
+    </style>
+</head>
+<body>
+    <h1>Feedback App</h1>
+    
+    <input type="text" id="searchBox" class="search-box" placeholder="Search posts">
+    
+    <hr>
+    
+    <form id="feedbackForm">
+        <div class="form-group">
+            <input type="text" id="title" placeholder="Title" required>
+        </div>
+        <div class="form-group">
+            <textarea id="body" placeholder="Body" rows="4" required></textarea>
+        </div>
+        <button type="submit">Save</button>
+    </form>
+    
+    <hr>
+    
+    <div id="postsContainer"></div>
+
+    <script>
+        let posts = [
+            {
+                id: "1",
+                title: "Third post",
+                "date-time": "2024-06-15T10:00:00Z",
+                body: "This is the body of the third post."
+            },
+            {
+                id: "2",
+                title: "Fourth post",
+                "date-time": "2024-06-15T10:00:00Z",
+                body: "This is the body of the fourth post."
+            }
+        ];
+
+        function displayPosts(postsToShow = posts) {
+            const container = document.getElementById('postsContainer');
+            container.innerHTML = '';
+            
+            postsToShow.forEach(post => {
+                const postDiv = document.createElement('div');
+                postDiv.className = 'post';
+                postDiv.innerHTML = `
+                    <h3>${post.title}</h3>
+                    <p>${new Date(post['date-time']).toLocaleString()}</p>
+                    <p>${post.body}</p>
+                `;
+                container.appendChild(postDiv);
+            });
+        }
+
+        document.getElementById('searchBox').addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            const filtered = posts.filter(post => 
+                post.title.toLowerCase().includes(searchTerm)
+            );
+            displayPosts(filtered);
+        });
+
+        document.getElementById('feedbackForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const title = document.getElementById('title').value;
+            const body = document.getElementById('body').value;
+            
+            if (title && body) {
+                const newPost = {
+                    id: String(posts.length + 1),
+                    title: title,
+                    'date-time': new Date().toISOString(),
+                    body: body
+                };
+                
+                posts.push(newPost);
+                displayPosts();
+                
+                document.getElementById('title').value = '';
+                document.getElementById('body').value = '';
+                document.getElementById('searchBox').value = '';
+            }
+        });
+
+        // Initial display
+        displayPosts();
+    </script>
+</body>
+</html>
